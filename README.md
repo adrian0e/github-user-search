@@ -1,3 +1,6 @@
+# Live demo
+https://adrian0e.github.io/github-user-search/
+
 # GithubUserSearch
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
