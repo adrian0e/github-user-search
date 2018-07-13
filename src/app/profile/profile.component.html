@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+          <!--<input [(ngModel)]="username" name="username" type="text" class="form-control" placeholder="Enter Github Username...">&nbsp;-->
+          <!--<button class="btn btn-primary" type="button" (click)="searchUser()">Search</button>-->
+          <input [(ngModel)]="username" name="username" type="text" class="form-control" (keyup)="searchUser()" placeholder="Enter Github Username...">&nbsp;
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="userData && username">
+  <div class="card">
+    <h5 class="card-header">
+      <div *ngIf="userData.name != null">
+        {{userData.name}}
+      </div>
+      <div *ngIf="userData.name == null">
+        {{userData.login}}
+      </div>
+    </h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <img class="img-thumbnail" src="{{userData.avatar_url}}" alt="Card image cap"><br>
+          <a href="{{userData.html_url}}" target="_blank" class="btn btn-secondary btn-block">View Profile</a>
+        </div>
+        <div class="col-md-8">
+          <div class="stats">
+            <span class="badge badge-primary">{{userData.public_repos}} Public Repos</span>&nbsp;
+            <span class="badge badge-success">{{userData.followers}} Followers</span>&nbsp;
+            <span class="badge badge-info">{{userData.following}} Following</span>
+          </div>
+          <br>
+          <ul class="list-group">
+            <li class="list-group-item">Username: {{userData.login}}</li>
+            <li class="list-group-item">Location: {{userData.location}}</li>
+            <li class="list-group-item">Email: {{userData.email}}</li>
+            <li class="list-group-item">Blog: {{userData.blog}}</li>
+            <li class="list-group-item">Member since: {{userData.created_at | date}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+    <div class="card">
+      <h5 class="card-header">User Repos</h5>
+      <div class="card-body">
+        <div *ngFor="let repo of userRepos">
+          <div class="row">
+            <div class="col-md-10">
+              <h4><a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></h4>
+              <p>{{repo.description}}</p>
+            </div>
+            <div class="col-md-2">
+              <span class="badge badge-primary">{{repo.watchers}} Watchers</span><br>
+              <span class="badge badge-success">{{repo.forks}} Forks</span>
+            </div>
+          </div>
+        <hr>
+        </div>
+      </div>
+  </div>
+</div>
