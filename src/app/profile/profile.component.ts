@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {}
 
   searchUser() {
-    setTimeout(() => {
+    // setTimeout(() => {
       if (!this.username) {
         return;
       }
@@ -31,6 +31,6 @@ export class ProfileComponent implements OnInit {
       this.github.getRepos(this.username).subscribe((repos: any) => {
         this.userRepos = repos;
       });
-    }, 1000);
+    // }, 1000);
   }
 }

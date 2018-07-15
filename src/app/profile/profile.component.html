@@ -5,14 +5,14 @@
         <div class="input-group">
           <!--<input [(ngModel)]="username" name="username" type="text" class="form-control" placeholder="Enter Github Username...">&nbsp;-->
           <!--<button class="btn btn-primary" type="button" (click)="searchUser()">Search</button>-->
-          <input [(ngModel)]="username" name="username" type="text" class="form-control" (keyup)="searchUser()" placeholder="Enter Github Username...">&nbsp;
+          <input [(ngModel)]="username" name="username" type="text" class="form-control" (keydown.enter)="searchUser()" placeholder="Enter Github username and press the Enter key">&nbsp;
         </div>
       </div>
     </form>
   </div>
 </div>
 
-<div *ngIf="userData && username">
+<div *ngIf="userData">
   <div class="card">
     <h5 class="card-header">
       <div *ngIf="userData.name != null">
